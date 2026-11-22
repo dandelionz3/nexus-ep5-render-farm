@@ -46,5 +46,6 @@ pipeline-nexus/                 <- isi ~/workspace/shorts/nexus-zero-ep5/pipelin
 ## Status
 - Pipeline + plan.json: SIAP (lokal, validate_headless OK).
 - Repo: dibuat, push pertama (pipeline + workflow test + full).
+- **FARM TEST 22 Nov ~14:5x WIB: run 44999774330 completed/success 6/6, 120/120 frame, PIL BAD 0 — TAPI STILLS GAGAL: S2 kamera di dalam rak (68/216 frame), S5 two-shot Kairo 214 terpotong, S7 EVA siluet hitam, S4 fokus lunak. FULL RUN DITAHAN sampai plan_nexus_ep5.py diperbaiki (jalur kamera S2 ke lorong x=80, framing S5, fill S7, focus S4) + test ulang bersih. Detail: PROGRESS.md Fase 4.**
 - JANGAN posting ke mana pun. JANGAN encode video dulu (ASS masih dikerjakan
   tim audio paralel). Frame + verifikasi saja.

@@ -268,10 +268,12 @@ for row in plan:
         _q = _q @ Quaternion((0.0, 0.0, 1.0), _roll)
     cam.rotation_euler = _q.to_euler()
     cam.data.dof.focus_distance = cm["focus"]
+    cam.data.dof.aperture_fstop = cm.get("fstop", 2.0)  # FIX 22 Nov: ECU S4/S8 f/8
     cam.data.lens = cm["lens"] * LENSK
     cam.keyframe_insert("location", frame=fr)
     cam.keyframe_insert("rotation_euler", frame=fr)
     cam.data.keyframe_insert("dof.focus_distance", frame=fr)
+    cam.data.keyframe_insert("dof.aperture_fstop", frame=fr)
     cam.data.keyframe_insert("lens", frame=fr)
 
 # baked per frame: tanpa easing antar key
