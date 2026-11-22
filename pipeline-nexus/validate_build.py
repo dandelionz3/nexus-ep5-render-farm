@@ -28,6 +28,7 @@ for name in ["NX_Gate", "NX_GateFrameL", "NX_GateFrameR", "NX_GateFrameT",
              "KAI_Scar", "KAI_ScarGlow", "KAI001_Scar", "KAI001_ScarGlow",
              "KAI001_GreyTempleL", "KAI001_GreyTempleR",
              "EvaRimCore", "AmberLight", "DawnLight", "NexusLight", "RimRedCore",
+             "GateFill",
              "SH_AmberBack", "SH_AmberPostL", "SH_AmberPostR",
              "SH_AmberTop", "SH_AmberBase", "SH_AmberSlot",
              "SH_000", "SH_105", "SH_211"]:

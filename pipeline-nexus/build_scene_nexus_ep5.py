@@ -488,6 +488,7 @@ def area_light(name, loc, color, energy, size, rot, shadow=False):
 area_light("CoreFill", (RX, -16, 8), (0.62, 0.72, 1.0), 90.0, 16, (math.radians(55), 0, 0))
 point_light("RimRedCore", (RX, 10.0, 3.0), (0.30, 0.65, 1.0), 500.0)  # Ep 5: rim BIRU (nama objek warisan Ep 2/3/4)
 point_light("EvaRimCore", (RX + 4, -6, 2.5), (0.30, 0.65, 1.0), 0.0)
+point_light("GateFill", (RX, 17.0, 3.0), (0.85, 0.88, 1.0), 0.0)  # Ep 5 re-test 2: fill depan EVA di S7 (di sisi kamera gerbang; 0 di luar S7)
 point_light("NexusLight", (RX, 16.0, 10.0), (0.30, 0.65, 1.0), 0.0)  # Ep 5: 0 SELALU (wajah hilang)
 area_light("GateLight", (RX, 22.5, 3.5), (1.0, 1.0, 0.95), 0.0, 12, (math.radians(90), 0, 0))
 # garis fajar TIPIS lewat gerbang (HANYA S1/S7, di-key di animate dari

@@ -145,7 +145,8 @@ for _o in list(objs):
 # Sentinel / data core / kota fajar).
 LIGHT_KEYS = {"nexus": ["NexusLight"], "gate": ["GateLight"],
               "rim": ["RimRedCore"], "eva": ["EvaRimCore"],
-              "fill": ["CoreFill"], "dawn": ["DawnLight"]}
+              "fill": ["CoreFill"], "dawn": ["DawnLight"],
+              "gatefill": ["GateFill"]}
 
 # Pre-key di frame START: skala gerbang + rak amber — chunk farm yang mulai di
 # tengah tidak menggantung di state yang salah.

@@ -82,16 +82,18 @@ def cam(x, y, z, tx, ty, tz, focus, lens, roll=0.0, fstop=2.0):
 
 
 def lights(nexus=0, gate=400, rim=0, eye=0, core=0, eva=0, fill=60,
-           dawn=0, warm=0):
+           dawn=0, warm=0, gatefill=0):
     """Ep 5: nexus=0 SELALU (wajah hilang), eye=0 SELALU (TIDAK ADA Sentinel),
     core=0 SELALU (data core tetap di ruang inti), warm=0 SELALU (TIDAK ADA
     kota fajar), rim = rim BIRU di belakang EVA/bekas luka (bukan merah),
     gate = putih gerbang, eva = biru EVA, fill = isi ruangan gelap (rendah),
-    dawn = garis fajar tipis lewat gerbang (HANYA S1/S7)."""
+    dawn = garis fajar tipis lewat gerbang (HANYA S1/S7), gatefill = fill
+    depan EVA dari sisi kamera (HANYA S7, 200 — EVA membelakangi kamera
+    menghadap gerbang, fill/rim/eva lama 11-37 m jauhnya tidak sampai)."""
     return {"nexus": round(nexus, 1), "gate": round(gate, 1), "rim": round(rim, 1),
             "eye": round(eye, 1), "core": round(core, 1), "eva": round(eva, 1),
             "fill": round(fill, 1), "dawn": round(dawn, 1),
-            "warm": round(warm, 1)}
+            "warm": round(warm, 1), "gatefill": round(gatefill, 1)}
 
 
 def kairo001_at_shelf(head_tilt=0, head_turn=0, lean=4):
@@ -389,7 +391,8 @@ for f in range(N):
             chars["KAI001"] = kairo001_at_shelf()
             chars_cam = cam(RX + 1.5, lerp(12.0, 15.0, smooth(t)), 1.8,
                             RX, 21.0, 1.6, lerp(10.0, 7.0, smooth(t)), 50)
-            li = lights(gate=280, rim=500, eva=600, fill=300, dawn=150 * dawn_line)
+            li = lights(gate=280, rim=500, eva=600, fill=300, dawn=150 * dawn_line,
+                        gatefill=200)
         else:
             # 7b: tracking lanjut, gerbang membesar di belakang EVA
             chars["EVA"] = char(RX, 21.0, 0, rot=180, lean=2, head_tilt=0,
@@ -398,7 +401,8 @@ for f in range(N):
                                 armL=5, armR=5, legL=0, legR=0)
             chars["KAI001"] = kairo001_at_shelf()
             chars_cam = cam(RX + 0.8, 16.5, 1.8, RX, 21.5, 1.6, 7.0, 50)
-            li = lights(gate=280, rim=500, eva=600, fill=300, dawn=150 * dawn_line)
+            li = lights(gate=280, rim=500, eva=600, fill=300, dawn=150 * dawn_line,
+                        gatefill=200)
     # ================= S8 TWIST (1320-1439) =================
     else:
         # ECU Kairo 001 -> hitam. Amber meredup PELAN; end card f1380-1439 (ASS).
@@ -590,9 +594,13 @@ def main():
                 if _seg_hits_box(_p0, _head, _pb):
                     _blocked.append((_f, _pb[0], _head))
     assert not _blocked, f"garis pandang S5 terhalang tiang amber: {_blocked[:10]}"
-    # S7: gate diredup + fill/rim depan dinaikkan
+    # S7: gate diredup + fill/rim depan dinaikkan + GateFill depan EVA
     assert all(rows[_f]["lights"]["gate"] == 280.0 for _f in range(1200, 1320)), \
         "gate S7 harus 280"
+    assert all(rows[_f]["lights"]["gatefill"] == 200.0 for _f in range(1200, 1320)), \
+        "gatefill S7 harus 200"
+    assert all(rows[_f]["lights"]["gatefill"] == 0.0 for _f in list(range(0, 1200)) + list(range(1320, 1440))), \
+        "gatefill hanya S7"
     assert all(rows[_f]["lights"]["fill"] == 300.0 for _f in range(1200, 1320)), \
         "fill S7 harus 300"
     assert all(rows[_f]["lights"]["rim"] == 500.0 for _f in range(1200, 1320)), \
